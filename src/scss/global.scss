@@ -1,0 +1,10 @@
+@use './colors.scss' as c;
+
+body, body::before, body::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-width: 100%;
+  min-height: 100vh;
+  background-color: c.$background;
+}

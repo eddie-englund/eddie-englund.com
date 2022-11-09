@@ -1,0 +1,44 @@
+@use './colors.scss' as c;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@mixin font-family() {
+  font-family: 'Poppins', sans-serif;
+}
+
+@mixin font-weight-light() {
+  font-weight: 400;
+}
+
+@mixin font-weight-regular() {
+  font-weight: 400;
+}
+
+@mixin font-weight-medium() {
+  font-weight: 500;
+}
+
+@mixin font-weight-semi-bold() {
+  font-weight: 600;
+}
+
+@mixin font-weight-bold() {
+  font-weight: 700;
+}
+
+a, p, h1, h2, h3, h4 {
+  @include font-family();
+  color: c.$text;
+}
+
+h1, h2, h3, h4{
+  color: c.$text-header;
+}
+
+a, p {
+  font-size: 1em;
+}
+
+a {
+  @include font-weight-medium();
+  color: c.$text-link;
+}
