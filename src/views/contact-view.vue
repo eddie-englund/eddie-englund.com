@@ -36,4 +36,16 @@ import breadcrumbComponent from '@/components/breadcrumb-component.vue';
     border-radius: 8px;
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .contact-wrapper .inner-wrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .right {
+    margin-top: 10%;
+  }
+}
 </style>
