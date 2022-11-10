@@ -43,6 +43,7 @@ defineProps({
     align-items: center;
     background-color: c.$card-background-darker;
     border-radius: 8px 0 0 8px;
+    min-height: 100%;
   }
 
   .right {

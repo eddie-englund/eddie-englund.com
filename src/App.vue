@@ -73,4 +73,12 @@ nav {
 .content {
   padding-top: 10%;
 }
+
+@media only screen and (max-width: 800px) {
+  .app-inner-wrapper {
+    max-width: 400px;
+    min-width: 5rem;
+    padding-top: 2rem;
+  }
+}
 </style>

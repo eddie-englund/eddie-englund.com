@@ -25,8 +25,10 @@ defineProps<{ crumbs: OrderedCrumb[] }>();
     transition: all 0.3s ease;
 
     &:hover {
-      color: c.$text-link;
-      text-decoration: underline;
+      span {
+        color: c.$text-link;
+        text-decoration: underline;
+      }
     }
   }
 }
