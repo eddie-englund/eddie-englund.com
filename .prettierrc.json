@@ -1,6 +1,8 @@
 {
-  "singleQuote": true,
-  "tabWidth": 2,
+  "$schema": "https://json.schemastore.org/prettierrc",
+  "printWidth": 80,
   "endOfLine": "lf",
-  "printWidth": 120
+  "singleQuote": true,
+  "useTabs": false,
+  "tabWidth": 2
 }
