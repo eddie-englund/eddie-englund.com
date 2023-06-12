@@ -1,12 +1,14 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+import defaultTheme from 'tailwindcss/defaultTheme';
+import typography from '@tailwindcss/typography';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/content'],
   srcDir: './src',
   tailwindcss: {
     config: {
+      darkMode: true,
       content: [
         `components/**/*.{vue,js,ts}`,
         `layouts/**/*.vue`,
@@ -18,7 +20,7 @@ export default defineNuxtConfig({
         `app.{js,ts,vue}`,
         `Error.{js,ts,vue}`,
         `error.{js,ts,vue}`,
-        `app.config.{js,ts}`
+        `app.config.{js,ts}`,
       ],
       theme: {
         fontFamily: {
@@ -26,20 +28,32 @@ export default defineNuxtConfig({
         },
         extend: {
           colors: {
-            bg: "#111117",
-            cardBackground: "#212129",
-            cardBackgroundDarker: "#18181F",
-            light: "#dad3fd",
-            headerText: "#EEEBFD",
-            main: "#9E9BAF",
-            link:" #9681FC",
-            linkMuted:"hsla(250, 91%, 91%, 0.7)",
-            slBlue: "#75A1E3",
-            wlGreen: "#4BB8A7",
-          }
+            bg: '#111117',
+            cardBackground: '#212129',
+            cardBackgroundDarker: '#18181F',
+            light: '#dad3fd',
+            headerText: '#EEEBFD',
+            main: '#9E9BAF',
+            link: ' #9681FC',
+            linkMuted: 'hsla(250, 91%, 91%, 0.7)',
+            slBlue: '#75A1E3',
+            wlGreen: '#4BB8A7',
+          },
+          typography: {
+            DEFAULT: {
+              css: {
+                a: {
+                  color: '#9681FC',
+                  '&:hover': {
+                    color: 'hsla(250, 91%, 91%, 0.7)',
+                  },
+                },
+              },
+            },
+          },
         },
       },
-      plugins: [],
-    }
-  }
-})
+      plugins: [typography],
+    },
+  },
+});

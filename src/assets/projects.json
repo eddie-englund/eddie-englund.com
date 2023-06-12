@@ -1,14 +1,16 @@
 {
-    "projects": [
-        {
-            "msg": "An automated reconciliation platform that integrates with payment service providers. It’s mainly built with Scala and Vue (2 & 3).",
-            "header": "AccountIQ",
-            "img": "~/assets/aiq-mint.svg"
-        },
-        {
-            "msg": "A personal project to track all the issues I find on Stockholms public transport.Build with Typescript/NodeJs, Postgres, and Vue3.",
-            "header": "SL issue tracker",
-            "imgText": "SL"
-        }
-    ]
+  "projects": [
+    {
+      "msg": "An automated reconciliation platform that integrates with payment service providers. It’s mainly built with Scala and Vue (2 & 3).",
+      "header": "WorldLine Global (AccountIQ)",
+      "img": "~/assets/aiq-mint.svg",
+      "to": "worldline-global"
+    },
+    {
+      "msg": "A personal project to track all the issues I find on Stockholms public transport.Build with Typescript/NodeJs, Postgres, and Vue3.",
+      "header": "SL issue tracker",
+      "imgText": "SL",
+      "to": "sl-issue-tracker"
+    }
+  ]
 }
