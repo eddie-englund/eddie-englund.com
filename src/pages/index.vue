@@ -21,11 +21,11 @@ import data from '@/assets/projects.json';
         various music related items…
       </p>
       <p class="text-main lg:text-lg">
-        Currently I work at DevCode AB (a subsidiary of WorldLine Global), where
-        I work as a full-stack developer and designer for the product called
-        AccountIQ. I’m super happy with it right now as I get to have influence
-        over technical decisions made, the team is really agile, and it’s an
-        environment where I can get lots of experience!
+        Currently at WorldLine Global, where I work as a full-stack developer
+        and designer for the product called AccountIQ. I enjoy the team and the
+        product as I get to have influence over technical decisions made, the
+        team is really agile, and it’s an environment where I can get lots of
+        experience!
       </p>
     </div>
     <div class="mt-10 grid gap-4 lg:mt-14">

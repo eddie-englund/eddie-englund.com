@@ -6,6 +6,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss', '@nuxt/content'],
   srcDir: './src',
+  content: {
+    highlight: {
+      theme: {
+        default: 'github-dark',
+      },
+    },
+  },
   tailwindcss: {
     config: {
       darkMode: true,

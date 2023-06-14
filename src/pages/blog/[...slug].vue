@@ -1,12 +1,11 @@
 <script lang="ts" setup>
 const route = useRoute();
-
 const item = (route.params.slug[0] as string) ?? 'Missing article...';
 
 const crumbs = [
   { to: '/', name: 'Home' },
-  { to: '/projects', name: 'Projects' },
-  { to: item, name: item.replace('-', ' ') },
+  { to: '/blog', name: 'Blog' },
+  { to: item, name: 'Article' },
 ];
 </script>
 
