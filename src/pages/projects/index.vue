@@ -3,7 +3,7 @@ import data from '@/assets/projects.json';
 </script>
 
 <template>
-  <div class="mt-12">
+  <div class="pt-12">
     <h1 class="text-3xl font-bold text-white">Projects</h1>
     <p class="text-main text-lg">Just the good ones 😉</p>
     <div class="mt-10 grid gap-4 lg:mt-14">

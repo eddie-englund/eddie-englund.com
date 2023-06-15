@@ -3,7 +3,7 @@ import data from '@/assets/projects.json';
 </script>
 
 <template>
-  <div class="mt-12">
+  <div class="pt-12">
     <h1 class="text-3xl font-bold text-white lg:hidden">
       Hi there! My name is Eddie and I am a full-stack developer
     </h1>

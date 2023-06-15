@@ -17,5 +17,3 @@ const crumbs = [
     />
   </main>
 </template>
-
-<style lang="scss"></style>

@@ -16,7 +16,7 @@ const { data } = await useAsyncData('blog-hmoe', () =>
 </script>
 
 <template>
-  <div class="mt-12">
+  <div class="pt-12">
     <h1 class="text-3xl font-bold text-white">Blog</h1>
     <p class="text-main text-lg">Here I write about whatever I feel like!</p>
     <div class="mt-10 grid gap-4 lg:mt-14">
