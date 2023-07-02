@@ -7,7 +7,7 @@ interface BlogContent extends ParsedContent {
   date: string;
 }
 
-const { data } = await useAsyncData('blog-hmoe', () =>
+const { data } = await useAsyncData('blog-home', () =>
   queryContent<BlogContent>('/blog')
     .only(['title', 'date', 'description', '_path'])
     .sort({ date: 1 })
@@ -20,7 +20,6 @@ const { data } = await useAsyncData('blog-hmoe', () =>
     <h1 class="text-3xl font-bold text-white">Blog</h1>
     <p class="text-main text-lg">Here I write about whatever I feel like!</p>
     <div class="mt-10 grid gap-4 lg:mt-14">
-      {{ data }}
       <blog-card-component
         v-for="article in data"
         :key="article.title"

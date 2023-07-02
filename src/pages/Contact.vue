@@ -1,5 +1,5 @@
 <template>
-  <main class="mt-20 flex gap-10">
+  <main class="mt-10 flex gap-10">
     <div>
       <h1 class="text-3xl font-semibold text-white">
         Want to get in contact with me?

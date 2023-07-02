@@ -10,7 +10,7 @@ const crumbs = [
 </script>
 
 <template>
-  <main class="pb-10 pt-10">
+  <main class="pb-6">
     <bread-crumb-component :crumbs="crumbs" />
     <ContentDoc
       class="prose lg:prose-lg prose-invert prose-a:text-link mt-10"

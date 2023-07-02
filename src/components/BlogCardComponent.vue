@@ -17,6 +17,6 @@ const router = useRouter();
     @click="router.push({ path: to })"
   >
     <h3 class="text-headerText text-base font-medium">{{ title }}</h3>
-    <p class="text-main text-sm">{{ description }}</p>
+    <p class="text-main mt-2 text-sm">{{ description }}</p>
   </div>
 </template>
