@@ -2,7 +2,7 @@
   "projects": [
     {
       "msg": "An automated reconciliation platform that integrates with payment service providers. It’s mainly built with Scala and Vue (2 & 3).",
-      "header": "WorldLine Global (AccountIQ)",
+      "header": "WorldLine (AccountIQ)",
       "img": "~/assets/aiq-mint.svg",
       "to": "worldline-global"
     },

@@ -25,7 +25,7 @@ const emit = defineEmits(['close']);
       class="stroke-light w-8 border-white lg:hidden"
       @click="emit('close')"
     />
-    <nuxt-link to="/">
+    <nuxt-link to="/" @click="emit('close')">
       <h2
         class="text-headerText hover:text-link hidden text-base text-lg font-medium ease-in-out hover:underline lg:block"
       >
@@ -37,17 +37,21 @@ const emit = defineEmits(['close']);
         Home
       </h2>
     </nuxt-link>
-    <header-item-with-icon title="Projects" to="/projects">
+    <header-item-with-icon
+      title="Projects"
+      to="/projects"
+      @click="emit('close')"
+    >
       <folder-icon
         class="stroke-headerText group-hover:stroke-link w-4 ease-in-out"
       />
     </header-item-with-icon>
-    <header-item-with-icon title="Blog" to="/blog">
+    <header-item-with-icon title="Blog" to="/blog" @click="emit('close')">
       <document-text-icon
         class="stroke-headerText group-hover:stroke-link w-4 ease-in-out"
       />
     </header-item-with-icon>
-    <header-item-with-icon title="Contact" to="/contact">
+    <header-item-with-icon title="Contact" to="/contact" @click="emit('close')">
       <chat-bubble-left-ellipsis-icon
         class="stroke-headerText group-hover:stroke-link w-4 ease-in-out"
       />

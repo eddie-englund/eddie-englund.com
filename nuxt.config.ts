@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   content: {
     highlight: {
       theme: {
-        default: 'github-dark',
+        default: 'one-dark-pro',
       },
     },
   },

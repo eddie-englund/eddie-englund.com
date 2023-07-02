@@ -11,7 +11,7 @@ const crumbs = [
 </script>
 
 <template>
-  <main class="pb-10">
+  <main class="py-20 lg:pt-0">
     <bread-crumb-component :crumbs="crumbs" />
     <ContentDoc
       class="prose lg:prose-lg prose-invert prose-a:text-link mt-10"
