@@ -18,10 +18,10 @@ const crumbs = [
 </script>
 
 <template>
-  <main class="py-20 lg:pt-0">
+  <main class="align-center mx-auto flex flex-col justify-center py-20 lg:pt-0">
     <bread-crumb-component :crumbs="crumbs" />
     <content-doc
-      class="prose lg:prose-lg prose-invert prose-a:text-link mt-10"
+      class="prose lg:prose-lg prose-invert prose-a:text-link min-w-60 mt-10 xl:max-w-[125ch]"
     />
   </main>
 </template>
