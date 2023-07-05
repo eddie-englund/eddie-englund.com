@@ -16,10 +16,10 @@ Axios version was 0.23.0 and Webpack had version 2.7.0 (current as of typing is 
 And trust me, we had plenty of other dependencies that were also outdated.
 
 So, why change now if the application hasn't in so long? Well, let's start with the main reason. We wanted to change our data grid
-from [handsontable](https://www.npmjs.com/package/handsontable) which we had at a deprecated 6.2.3 with the old
-"handsontable-pro" dependency (no longer called pro). Because of several reason (some of which I won't go into here), but the main reason
-was that it was very hard to work with, the setup was super complex and not extendable or even comprehensable at all and worst of all
-the performance was horrible.
+from [handsontable](https://www.npmjs.com/package/handsontable) which we had at a deprecated version (6.2.3) with the old
+"handsontable-pro" dependency (no longer called pro and lives in another npm project). Because of several reasons (some of which I won't go into here).
+The main reason was that it was very hard to work with, the setup was super complex and not extendable or even comprehensable at all in some cases,
+and worst of all the performance was horrible.
 
 So, let's change! We looked at some alternatives and decided to use [RevoGrid](https://revolist.github.io/revogrid/) which seemed
 promising. However, our original attempt to use it was unsuccessful. RevoGrid needed a higher Node.js version (at the time we used Node.js 14),
@@ -27,21 +27,23 @@ but we weren't 100% sure about this, if not that, maybe it was our ancient Babel
 
 We decided that it was time to look into updating our dependencies.
 
+So in this article I'll be telling the story of this upgrade, interesting finds, strange behaviours and what I learned along the way.
+
 ## Switching from Webpack to Vite
 
 Going into this task we had a lot of freedom to upgrade as we liked, partially because of poor planning, but it did give us developers
 free reign. So we decided to try and modernise as many dependencies as we could.
 
 The first contender for an upgrade was the build tool: Webpack 2. We could continue to use Webpack and upgrade to the latest version.
-However, since none of our old (and frankly bad) setup would work at all with Webpack 5 we might as well try a new kid on the block
+However, since none of our old (and frankly bad) setup would work at all with Webpack 5, we might as well try a new kid on the block
 which seemed very promising, Vite.
 
 The main reason for choosing Vite was its simple configuration and its speed relative to Webpack especially in the dev environment
 with hot reloading.
 
 This however, came with a big caveat that we wouldn't be able to ignore no matter what new build tool to use. We weren't going to be able to use any
-of the build dependencies beyond webpack itself. Because they are tied to Webpack and made specifically for Webpack 2.7. So even if we wanted to stay
-with Webpack we would need to remake the entire setup no matter what.
+of the build dependencies beyond Webpack itself. Reason being that they are tied to Webpack and made specifically for Webpack 2.7. Meaning that even
+if we wanted to stay with Webpack we would need to remake the entire setup no matter what.
 
 Dev dependencies related to build:
 
@@ -119,7 +121,7 @@ export default {
 </script>
 ```
 
-Components like these that used the `this` keyword for computed properties worked just as expected before our
+Components like these, which used the `this` keyword for computed properties worked just as expected before our
 use of Vite and vite-plugin-vue (among others). However, after the update the didn't work!
 
 The keen eye among you may already know what's wrong. You're not supposed to use the `this` keyword for computed properties and methods
@@ -127,35 +129,33 @@ and we can even see this in the Vue2 [documentation](https://v2.vuejs.org/v2/gui
 where they show this example:
 
 ```html
-<p>Reversed message: "{{ reverseMessage() }}"</p>
+<p>Reversed message: "{{ reverseMessage }}"</p>
 ```
 
 ```js
 // in component
-methods: {
+computed: {
   reverseMessage: function () {
     return this.message.split('').reverse().join('')
   }
 }
 ```
 
-But for some reason this all worked in our application before, to which I have no idea why but my guess is that it has something
-to do with Webpack and or the dependencies we had with it.
-
-But this wasn't only limited to computed properties but also methods. However, the diffirence was that methods do appear to work
-either way i.e with or without the `this` keyword. However, we still have to use `this` in our components in the component methods, computed properties, etc.
-Because of this doing a simple "find and replace" and do it on all components was not an option.
-This meant that we (I) had to go through almost every single file in use in our application to fix these cases.
+But for some reason this all worked in our application before. Most likely due to some Webpack plugin or something similar such as Babel.
+But this wasn't only limited to computed properties but also methods. The diffirence however, was that methods do appear to work
+either way with or without the `this` keyword. But we still have to use `this` in our components in the methods, computed properties, etc.
+Because of this I wasn't able to do a simple "find and replace" on the whole code bases vue components.
+This meant that we (I) had to go through almost every single file in use in our application to fix the usage of the `this` keyword.
 
 ### Vue toasted
 
 One of our central dependeices was [vue-toasted](https://www.npmjs.com/package/vue-toasted), but we realised that this Toast which
-we used to notify our users of info, success, and errors, was prone to criss-site scripting (XSS) attacks. We found this out in quite a fun way
+we used to notify our users of info, success, and errors, was prone to cross-site scripting (XSS) attacks. We found this out in quite a fun way
 where our back-end returned an unfiltered error from an integration against a third party which returned HTML and due to it's CSS
 our website decided to do a full on barrel roll!
 
-We solved it by switching all of our toasts from vue-toasted to the built in ones available with element ui (the ui library we use)
-which treats everything as plain text resolving the security issue with XSS.
+We solved it by switching all of our toasts from vue-toasted to the built in ones available with [Element UI](https://element.eleme.io/)
+(the ui library we use) which treats everything as plain text resolving the security issue with XSS.
 
 ### Ingenious error handling
 
