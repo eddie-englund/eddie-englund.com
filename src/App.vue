@@ -13,7 +13,7 @@ const open = useState('menu-open', () => false);
         @click="open = true"
       />
       <header-component :nav-open="open" @close="open = false" />
-      <div class="flex justify-center">
+      <div class="xl:flex xl:justify-center">
         <nuxt-page />
       </div>
     </div>
