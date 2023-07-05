@@ -1,9 +1,9 @@
 ---
-description: 'Maintinaing old applications can be hard! So in this article I go over one of my worst experiences so far updating a Vue 2 application with 5 year old dependencies.'
+description: 'Maintaining old applications can be hard! So in this article I go over one of my worst experiences so far updating a Vue 2 application with 5 year old dependencies.'
 date: '2023-06-14'
 ---
 
-# Upgrading a legacy vue application
+# Upgrading a legacy Vue application
 
 ## Preface
 
@@ -27,12 +27,12 @@ but we weren't 100% sure about this, if not that, maybe it was our ancient Babel
 
 We decided that it was time to look into updating our dependencies.
 
-So in this article I'll be telling the story of this upgrade, interesting finds, strange behaviours and what I learned along the way.
+So in this article I'll be telling the story of this upgrade, interesting finds, strange behaviors and what I learned along the way.
 
 ## Switching from Webpack to Vite
 
 Going into this task we had a lot of freedom to upgrade as we liked, partially because of poor planning, but it did give us developers
-free reign. So we decided to try and modernise as many dependencies as we could.
+free reign. So we decided to try and modernize as many dependencies as we could.
 
 The first contender for an upgrade was the build tool: Webpack 2. We could continue to use Webpack and upgrade to the latest version.
 However, since none of our old (and frankly bad) setup would work at all with Webpack 5, we might as well try a new kid on the block
@@ -86,8 +86,8 @@ Dev dependencies related to build:
 So as you can see we had a lot of work ahead of us.
 
 However after a lot of work to get the project to compile and run we noticed something horrible. **Handsontable broke**...
-Of course our intetions was always to replace it but the way we had initally planned it was to do it over several sprints,
-and change views on the go so that we could split it up into more manageble tasks.
+Of course our intentions was always to replace it but the way we had initially planned it was to do it over several sprints,
+and change views on the go so that we could split it up into more manageable tasks.
 
 This was a major setback for us because it meant that we no longer could simply do a partial upgrade and just update our dependencies,
 build tools, CI/CD, and basic changes to the application internals. No, we had to re-write **major** parts of the application and had
@@ -98,9 +98,9 @@ to move to RevoGrid in one go.
 Due to the old grids completely breaking we needed to remake at minimum 7-8 advanced data grids and pages,
 everything surrounding it from API calls, filters, interfaces, and more.
 
-### Strange findings and changes in behaviour
+### Strange findings and changes in behavior
 
-One thing we realised was that we had very unstable behaviour with the `this` keyword in our Vue components.
+One thing we realized was that we had very unstable behavior with the `this` keyword in our Vue components.
 For example this component:
 
 ```html
@@ -142,20 +142,20 @@ computed: {
 ```
 
 But for some reason this all worked in our application before. Most likely due to some Webpack plugin or something similar such as Babel.
-But this wasn't only limited to computed properties but also methods. The diffirence however, was that methods do appear to work
+But this wasn't only limited to computed properties but also methods. The difference however, was that methods do appear to work
 either way with or without the `this` keyword. But we still have to use `this` in our components in the methods, computed properties, etc.
-Because of this I wasn't able to do a simple "find and replace" on the whole code bases vue components.
+Because of this I wasn't able to do a simple "find and replace" on the whole code bases Vue components.
 This meant that we (I) had to go through almost every single file in use in our application to fix the usage of the `this` keyword.
 
 ### Vue toasted
 
-One of our central dependeices was [vue-toasted](https://www.npmjs.com/package/vue-toasted), but we realised that this Toast which
+One of our central dependencies was [vue-toasted](https://www.npmjs.com/package/vue-toasted), but we realized that this Toast which
 we used to notify our users of info, success, and errors, was prone to cross-site scripting (XSS) attacks. We found this out in quite a fun way
 where our back-end returned an unfiltered error from an integration against a third party which returned HTML and due to it's CSS
 our website decided to do a full on barrel roll!
 
 We solved it by switching all of our toasts from vue-toasted to the built in ones available with [Element UI](https://element.eleme.io/)
-(the ui library we use) which treats everything as plain text resolving the security issue with XSS.
+(the UI library we use) which treats everything as plain text resolving the security issue with XSS.
 
 ### Ingenious error handling
 
@@ -192,13 +192,13 @@ if (error.response.status === 503 && error.response.headers['x-maintenance-mode'
 }
 ```
 
-The first one which is just fabulous will instatly reload our website if any of our HTTP requests result in
-a 403 (meaning forbidden) or a 401 (meaning unathorized). So this just got thrown out immediately since this is just pure instanity.
+The first one which is just fabulous will instantly reload our website if any of our HTTP requests result in
+a 403 (meaning forbidden) or a 401 (meaning unauthorized). So this just got thrown out immediately since this is just pure insanity.
 Reloading on this means that **any** API request/endpoint that returned any of these error codes would result in the application simply reloading,
 meaning that the user has no idea what just happened, nor do we have a traceable way to detect errors which we can resolve instead.
 
 The second piece of code, unfortunately still lives on and this is because someone in our team (long before me joining),
-thought it'd be a good idea to do maintenance mode via chaning our nginx config serving the website to simply respond
+thought it'd be a good idea to do maintenance mode via changing our Nginx config serving the website to simply respond
 with a x-maintenance-mode header along with 503 HTTP status.
 
 At some point we will get around to changing this as well...
