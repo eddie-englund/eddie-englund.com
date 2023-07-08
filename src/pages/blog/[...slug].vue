@@ -21,7 +21,7 @@ const crumbs = [
   <main class="py-20 lg:pt-0">
     <bread-crumb-component :crumbs="crumbs" />
     <content-doc
-      class="prose lg:prose-lg prose-invert prose-a:text-link mt-10 xl:max-w-[125ch]"
+      class="prose lg:prose-lg prose-invert prose-a:text-link prose-img:rounded mt-10"
     />
   </main>
 </template>

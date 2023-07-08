@@ -5,7 +5,7 @@ const open = useState('menu-open', () => false);
 
 <template>
   <div
-    class="bg-bg bg-image text-main oveflow-hidden min-h-screen bg-[url('/assets/bg.svg')]"
+    class="bg-bg bg-image text-main overflow-hidden min-h-screen bg-[url('/assets/bg.svg')]"
   >
     <div class="mx-auto px-10 xl:max-w-[125ch] 2xl:px-40">
       <bars-3-icon
