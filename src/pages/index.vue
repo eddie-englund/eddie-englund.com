@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { data } = await useAsyncData('projects-home', () =>
+const { pending, data } = await useAsyncData('projects-home', () =>
   queryContent('/projects').only(['title', 'description', '_path']).find()
 );
 </script>
@@ -30,8 +30,11 @@ const { data } = await useAsyncData('projects-home', () =>
         accrue valuable experience
       </p>
     </div>
-    <div v-if="data" class="mt-10 grid gap-4 lg:mt-14 lg:grid-cols-2">
-      <project-component
+    <div
+      v-if="!pending && data"
+      class="mt-10 grid gap-4 lg:mt-14 lg:grid-cols-2"
+    >
+      <card-component
         v-for="project in data"
         :key="project._path"
         :title="project.title"
