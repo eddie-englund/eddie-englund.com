@@ -18,14 +18,13 @@ const { data } = await useAsyncData('blog-home', () =>
 <template>
   <div class="py-20 lg:pt-0">
     <h1 class="text-3xl font-bold text-white">Blog</h1>
-    <p class="text-main text-lg">Here I write about whatever I feel like!</p>
+    <p class="text-lg text-main">Here I write about whatever I feel like!</p>
     <div class="mt-10 grid gap-4 lg:mt-14">
-      <blog-card-component
+      <card-component
         v-for="article in data"
-        :key="article.title"
+        :key="article._path"
         :title="article.title"
-        :description="article.description"
-        :date="article.date"
+        :text="article.description"
         :to="article._path"
       />
     </div>

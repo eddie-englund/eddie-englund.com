@@ -1,3 +1,8 @@
+---
+description: "An automated reconciliation platform that integrates with payment service providers. It’s mainly built with Scala and Vue (2 & 3)."
+title: "AccountIQ"
+---
+
 # WorldLine Global
 
 [WorldLine Global](https://worldline.com/)

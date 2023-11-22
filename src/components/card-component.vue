@@ -10,8 +10,8 @@ const router = useRouter();
 
 <template>
   <div
-    class="grid min-h-[12rem] flex-col gap-2 rounded-xl border-2 border-cardBackgroundDarker bg-cardBackgroundDarker p-5 align-middle transition-all duration-150 ease-in-out hover:cursor-pointer hover:border-cardBackground hover:bg-cardBackground/20 lg:w-4/5 lg:flex-row"
-    @click="router.push(`/projects/${to}`)"
+    class="flex min-h-[12rem] flex-col gap-4 rounded-xl border-2 border-cardBackground bg-cardBackground p-5 align-middle transition-all duration-150 ease-in-out hover:cursor-pointer hover:border-cardBackgroundDarker hover:bg-cardBackgroundDarker/20"
+    @click="router.push(to)"
   >
     <h3 class="text-lg font-medium text-headerText">
       {{ title }}

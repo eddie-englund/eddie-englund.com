@@ -1,5 +1,8 @@
 <script lang="ts" setup>
-import data from '@/assets/projects.json';
+const { data } = useAsyncData(
+  'projects-home',
+  async () => await queryContent('/projects').find()
+);
 </script>
 
 <template>
@@ -28,30 +31,14 @@ import data from '@/assets/projects.json';
         accrue valuable experience
       </p>
     </div>
-    <div class="mt-10 grid gap-4 lg:mt-14">
+    <div v-if="data" class="mt-10 grid gap-4 lg:mt-14 lg:grid-cols-2">
       <project-component
-        v-for="project in data.projects"
-        :key="project.header"
-        :title="project.header"
-        :text="project.msg"
-        :to="project.to"
-      >
-        <img
-          v-if="project.img"
-          src="~/assets/aiq-mint.svg"
-          :alt="project.header"
-          class="w-16"
-        />
-        <h2 v-if="project.imgText" class="text-3xl text-slBlue">
-          {{ project.imgText }}
-        </h2>
-      </project-component>
+        v-for="project in data"
+        :key="project._path"
+        :title="project.title"
+        :text="project.description"
+        :to="project._path"
+      />
     </div>
   </div>
 </template>
-
-<style>
-.thing {
-  color: #b4b1c6;
-}
-</style>

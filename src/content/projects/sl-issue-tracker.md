@@ -1,3 +1,8 @@
+---
+description: "A personal project to track all the issues I find on Stockholms public transport.Build with Typescript/NodeJs, Postgres, and Vue3."
+title: "Sl Issue Tracker"
+---
+
 # Sl Issue Tracker
 
 [Website (repostitory)](https://github.com/eddie-englund/sl-issue-tracker-website)
