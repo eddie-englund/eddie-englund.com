@@ -4,28 +4,28 @@ import data from '@/assets/projects.json';
 
 <template>
   <div class="py-20 lg:pt-0">
-    <h1 class="text-3xl font-bold text-white lg:hidden">
-      Hi there! My name is Eddie and I am a full-stack developer
-    </h1>
-    <h1 class="hidden text-4xl font-bold text-white lg:block">
+    <h1 class="break-words text-2xl font-bold leading-8 text-white lg:text-4xl">
       Hi there! My name is Eddie and I am a full-stack developer
     </h1>
     <div class="mt-4 flex flex-col gap-3 lg:mt-6">
-      <p class="text-main lg:text-lg">
-        I am a Stockholm based full stack developer, with experience in Vue,
-        Docker, NodeJs, Typescript, and Scala.
-      </p>
-      <p class="text-main lg:text-lg">
-        I’m passionate at good UX and Design in all forms and shapes. I’m also a
-        guitarist and a huge music nerd who spends a bit too much money on
-        various music related items…
-      </p>
-      <p class="text-main lg:text-lg">
-        Currently at WorldLine Global, where I work as a full-stack developer
-        and designer for the product called AccountIQ. I enjoy the team and the
-        product as I get to have influence over technical decisions made, the
-        team is really agile, and it’s an environment where I can get lots of
-        experience!
+      <p class="break-words text-main lg:text-lg">
+        I am a full-stack developer based in Stockholm, possessing expertise in
+        Vue, Docker, NodeJs, Typescript, and Scala. My enthusiasm extends to
+        cultivating exceptional user experiences and design across diverse
+        manifestations.
+        <br />
+        <br />
+
+        Beyond my professional pursuits, I am an avid guitarist and a devoted
+        music aficionado, occasionally indulging in the acquisition of various
+        music-related items. In my current role at WorldLine Global, I serve as
+        a full-stack developer and designer for the AccountIQ product.
+        <br />
+        <br />
+
+        This position affords me the opportunity to wield influence over
+        technical decisions, participate in an agile team environment, and
+        accrue valuable experience
       </p>
     </div>
     <div class="mt-10 grid gap-4 lg:mt-14">
@@ -42,10 +42,16 @@ import data from '@/assets/projects.json';
           :alt="project.header"
           class="w-16"
         />
-        <h2 v-if="project.imgText" class="text-slBlue text-3xl">
+        <h2 v-if="project.imgText" class="text-3xl text-slBlue">
           {{ project.imgText }}
         </h2>
       </project-component>
     </div>
   </div>
 </template>
+
+<style>
+.thing {
+  color: #b4b1c6;
+}
+</style>

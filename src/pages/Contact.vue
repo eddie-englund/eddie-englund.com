@@ -8,7 +8,7 @@
         Feel free to reach out on
         <a
           href="https://www.linkedin.com/in/eddie-englund/"
-          class="text-link hover:text-linkMuted duration:150 ease-in-out"
+          class="duration:150 text-link ease-in-out hover:text-linkMuted"
           >LinkedIn</a
         >!
       </p>
@@ -22,7 +22,7 @@
       <p class="mt-5">Thats me 👆</p>
     </div>
     <a href="https://www.linkedin.com/in/eddie-englund/" class="lg:hidden">
-      <button class="bg-link w-80 rounded px-10 py-2 font-medium text-black">
+      <button class="w-80 rounded bg-link px-10 py-2 font-medium text-black">
         LinkedIn
       </button>
     </a>
