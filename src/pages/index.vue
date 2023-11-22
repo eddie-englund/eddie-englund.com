@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const { data } = await useAsyncData('projects-home', () =>
-  queryContent('/projects').find()
+  queryContent('/projects').only(['title', 'description', '_path']).find()
 );
 </script>
 
