@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-const { data } = useAsyncData(
-  'projects-home',
-  async () => await queryContent('/projects').find()
+const { data } = await useAsyncData('projects', () =>
+  queryContent('/projects').find()
 );
 </script>
 
