@@ -4,7 +4,9 @@ const open = useState('menu-open', () => false);
 </script>
 
 <template>
-  <div class="min-h-screen overflow-hidden bg-bg text-main">
+  <div
+    class="min-h-screen overflow-hidden bg-bg bg-[url('/assets/bg.svg')] text-main"
+  >
     <div class="mx-auto px-10 xl:max-w-[100ch] 2xl:px-40">
       <bars-3-icon
         class="fixed right-10 top-5 w-8 stroke-light lg:hidden"
